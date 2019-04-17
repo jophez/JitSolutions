@@ -1,0 +1,22 @@
+﻿@model List<WebApplication.Models.MaterialAssemblyModels>
+
+<table class="child" cellpadding="4" cellspacing="0" border="0" style="padding-left:50px;">
+    <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Code</td>
+            <td>@item.Description</td>
+            <td>@item.Quantity</td>
+            <td>@item.Unit</td>
+        </tr>
+    }
+</table>
+
+
+

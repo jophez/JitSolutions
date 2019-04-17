@@ -1,0 +1,155 @@
+﻿@{
+     ViewBag.Title = "ManageMarkUps";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row col-sm-12 col-lg-12 col-md-12">
+     <h1>MarkUp Manager</h1>
+     <br />
+</div>
+
+<div class="row col-sm-12 col-lg-12 col-md-12">
+
+     <div class="col-sm-6 col-lg-6 col-md-6">
+          <div class="panel panel-primary">
+               <div class="panel-heading">
+                    <h4>MarkUp List</h4>
+               </div>
+               <div class="panel-body">
+                    <table class="table table-striped table-hover col-sm-6 col-lg-6 col-md-6 ">
+                         
+                         @foreach (var item in ViewBag.MarkupList)
+                              {
+                              <tr>
+                                   <td class="col-sm-1 col-lg-5 col-md-5">
+                                        <strong>@item.Text </strong>
+                                   </td>
+                                   <td class="col-sm-1 col-lg-1 col-md-1">
+                                        <span onclick="return confirm('Are you sure to delete?')"><a href="/Markups/Delete?markupCode=@item.Text" class="delLink" style="color:red;">Delete</a></span> |
+                                        @Html.ActionLink("Edit", "Edit", new { markupCode = @item.Text })
+                                   </td>
+                              </tr>}
+                    </table>
+               </div> <!-- End Panel Body-->
+          </div> <!-- End Panel -->
+
+          <div class="panel panel-primary">
+               <div class="panel-heading">
+                    <h4>Create A New Markup</h4>
+               </div>
+               <div class="panel-body">
+                    @using (Html.BeginForm("Create", "Markups", new { @class = "form-horizontal" }))
+                         {
+                         @Html.AntiForgeryToken()
+                         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                         <div>
+                              <div>
+                                   @Html.Label("Code"): @Html.TextBox("Code")
+                                   @Html.ValidationMessage("Code", "*")
+                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   @Html.Label("Administrative") : @Html.TextBox("Administrative", null, new { type = "number", style = "display:inline-block;width:110px;" })
+                                   @Html.ValidationMessage("Administrative", "*")
+                                   <br />
+                              </div>
+                              <div style="padding-top:5px;">
+                                   @Html.Label("Contingency"): @Html.TextBox("Contingency", null, new { type = "number", style = "display: inline - block; width: 110px; " })
+                                   @Html.ValidationMessage("Contingency", "*")
+                                   &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                                   @Html.Label("Direct Labor") :  @Html.TextBox("DirectLabor", null, new { type = "number", style = "display:inline-block;width:115px;" })
+                                   @Html.ValidationMessage("DirectLabor", "*")
+                              </div>
+                              <div style="padding-top:5px;">
+                                   &nbsp; &nbsp; @Html.Label("Equipment"): @Html.TextBox("Equipment", null, new { style = "display:inline-block;width:107px;", type = "number" })
+                                   @Html.ValidationMessage("Equipment", "*")
+                                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @Html.Label("Marketing") : @Html.TextBox("Marketing", null, new { style = "display:inline-block;width:112px;", type = "number" })
+                                   @Html.ValidationMessage("Marketing", "*")
+                              </div>
+                              <div style="padding-top:5px">
+                                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  @Html.Label("Markup"): @Html.TextBox("Markup", null, new { style = "display:inline-block;width:110px;", type = "number" })
+                                   @Html.ValidationMessage("Markup", "*")
+                                   &nbsp; &nbsp; @Html.Label("Representation") : @Html.TextBox("Representation", null, new { style = "display:inline-block;width:115px;", type = "number" })
+                                   @Html.ValidationMessage("Representation", "*")
+                              </div>
+                              <div style="padding-top:5px;">
+                                   &nbsp; &nbsp; &nbsp; &nbsp; @Html.Label("VAT EWT"): @Html.TextBox("Vat_Ewt", null, new { style = "display:inline-block;width:110px;", type = "number" })
+                                   @Html.ValidationMessage("Vat_Ewt", "*")
+                                   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;@Html.Label("Generic 1") : @Html.TextBox("Generic1", null, new { style = "display:inline-block;width:110px;", type = "number" })
+                              </div>
+                              <div style="padding-top:5px;">
+                                   &nbsp; &nbsp;  @Html.Label("Generic 2") : @Html.TextBox("Generic2", null, new { style = "display:inline-block;width:110px;", type = "number" })
+                                   &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; @Html.Label("Generic 3")   : @Html.TextBox("Generic3", null, new { style = "display:inline-block;width:110px;", type = "number" })
+                              </div>
+
+                              <br /><input type="submit" value="Save" class="btn-primary" />
+                         </div>}
+
+               </div> <!--End Panel Body-->
+          </div> <!--End Panel-->
+     </div> <!--End First Column-->
+
+     <div class="col-sm-6 col-lg-6 col-md-6">
+          <div class="panel panel-primary">
+               <div class="panel-heading">
+                    <h4>Assign a Markup to BOM</h4>
+               </div>
+               <div class="panel-body">
+                    @using (Html.BeginForm("AddMarkupToBom", "Markups"))
+                         {
+                         @Html.AntiForgeryToken()
+                         @Html.ValidationSummary(true)
+
+                         <p>Bill Of Materials: @Html.DropDownList("BomListId", (IEnumerable<SelectListItem>)ViewBag.BomList, "Select ...")</p>
+                         <p>Markup Code: @Html.DropDownList("NewMarkupId", (IEnumerable<SelectListItem>)ViewBag.MarkupList, "Select ...")</p>
+                         <p><input type="submit" value="Save this Markup to BOM" class="btn-primary" /></p>}
+               </div> <!-- End Panel Body-->
+          </div> <!-- End Panel -->
+
+
+          <div class="panel panel-primary">
+               <div class="panel-heading">
+                    <h4>List Markups for BOM</h4>
+               </div>
+               <div class="panel-body">
+                    @using (Html.BeginForm("GetMarkups", "Markups"))
+                         {
+                         @Html.AntiForgeryToken()
+                         <p>
+                              Bill Of Material : @Html.DropDownList("BomListId", (IEnumerable<SelectListItem>)ViewBag.BomList, "Select ...")
+                              <input type="submit" value="Get Markups for this BOM" class="btn-primary" />
+                         </p>}
+
+                    @if (ViewBag.MarkupsForThisBom != null)
+                         {
+                         <div class="alert-info">
+                              <strong>Markups for this BOM </strong>
+                              <ol>
+                                   @foreach (var s in ViewBag.MarkupsForThisBom)
+                                        {
+                                        <li>@s.Code</li>}
+                              </ol>
+                         </div>}
+               </div> <!-- End Panel Body-->
+          </div> <!-- End Panel -->
+
+          <div class="panel panel-primary">
+               <div class="panel-heading">
+                    <h4>Remove Markup from BOM</h4>
+               </div>
+               <div class="panel-body">
+                    @using (Html.BeginForm("RemoveMarkupFromBom", "Markups"))
+                         {
+                         @Html.AntiForgeryToken()
+                         @Html.ValidationSummary(true)
+
+                         <p>Bill Of Materials: @Html.DropDownList("BomListId", (IEnumerable<SelectListItem>)ViewBag.BomList, "Select ...")</p>
+                         <p>Markup Code: @Html.DropDownList("MarkupListForRemove", (IEnumerable<SelectListItem>)ViewBag.MarkupList, "Select ...")</p>
+                         <p><input type="submit" value="Delete this Markup from BOM" class="btn-primary" /></p>}
+               </div> <!-- End Panel Body-->
+          </div> <!-- End Panel -->
+
+     </div> <!--End Second Column-->
+</div>  <!--Overall Page Wrapper-->
+
+<div class="alert-info col-sm-12 col-lg-12 col-md-12">
+     @ViewBag.Message
+</div>

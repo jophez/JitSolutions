@@ -1,0 +1,1793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WynPowerDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="GetPermissionInTable_Result">
+    <Property Name="permission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="UDF_RoleDifferencing_Result">
+    <Property Name="fieldname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="newvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="oldvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="UDF_UserDifferencing_Result">
+    <Property Name="fieldname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="newvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="oldvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APPLICATIONSESSION">
+    <Key>
+      <PropertyRef Name="APPSESSIONID" />
+    </Key>
+    <Property Name="APPSESSIONID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SESSIONID" Type="Int64" Nullable="false" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="ROLEID" Type="Int32" Nullable="false" />
+    <Property Name="LOGIN_TIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CLIENT_IPADDRESS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ROLE" Relationship="Self.role_id_fk" FromRole="APPLICATIONSESSION" ToRole="ROLE" />
+    <NavigationProperty Name="USER" Relationship="Self.user_id_fk" FromRole="APPLICATIONSESSION" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="aspnet_Applications">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredApplicationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="Self.FK__aspnet_Me__Appli__4A8310C6" FromRole="aspnet_Applications" ToRole="aspnet_Membership" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="Self.FK__aspnet_Pa__Appli__4B422AD5" FromRole="aspnet_Applications" ToRole="aspnet_Paths" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="Self.FK__aspnet_Ro__Appli__345EC57D" FromRole="aspnet_Applications" ToRole="aspnet_Roles" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Us__Appli__1CBC4616" FromRole="aspnet_Applications" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Me__Appli__4A8310C6" FromRole="aspnet_Membership" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Me__UserI__4B7734FF" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Paths">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Pa__Appli__4B422AD5" FromRole="aspnet_Paths" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_PersonalizationAllUsers" Relationship="Self.FK__aspnet_Pe__PathI__52E34C9D" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationAllUsers" />
+    <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="Self.FK__aspnet_Pe__PathI__589C25F3" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationPerUser" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationAllUsers">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="PageSettings" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="Self.FK__aspnet_Pe__PathI__52E34C9D" FromRole="aspnet_PersonalizationAllUsers" ToRole="aspnet_Paths" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationPerUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" />
+    <Property Name="UserId" Type="Guid" />
+    <Property Name="PageSettings" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="Self.FK__aspnet_Pe__PathI__589C25F3" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Paths" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Pe__UserI__59904A2C" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="PropertyNames" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PropertyValuesString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PropertyValuesBinary" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Pr__UserI__28ED12D1" FromRole="aspnet_Profile" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredRoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Ro__Appli__345EC57D" FromRole="aspnet_Roles" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_SchemaVersions">
+    <Key>
+      <PropertyRef Name="Feature" />
+      <PropertyRef Name="CompatibleSchemaVersion" />
+    </Key>
+    <Property Name="Feature" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompatibleSchemaVersion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsCurrentVersion" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Us__Appli__1CBC4616" FromRole="aspnet_Users" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="Self.FK__aspnet_Me__UserI__4B7734FF" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+    <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="Self.FK__aspnet_Pe__UserI__59904A2C" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
+    <NavigationProperty Name="aspnet_Profile" Relationship="Self.FK__aspnet_Pr__UserI__28ED12D1" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="Self.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+  </EntityType>
+  <EntityType Name="aspnet_WebEvent_Events">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EventSequence" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="EventOccurrence" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="EventCode" Type="Int32" Nullable="false" />
+    <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MachineName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="ASSEMBLY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MATERIALID" Type="Int32" Nullable="false" />
+    <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLASSIFICATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MATERIAL" Relationship="Self.rel_material_id_fk" FromRole="ASSEMBLY" ToRole="MATERIALS" />
+    <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+    <Property Name="UNIT" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ASSEMBLY_AUDITLOGS">
+    <Key>
+      <PropertyRef Name="AUDITID" />
+    </Key>
+    <Property Name="AUDITID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="LOGDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EVENTID" Type="Int32" Nullable="false" />
+    <Property Name="COMPINSTID" Type="Int32" Nullable="false" />
+    <Property Name="FIELDNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NEW_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OLD_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USER" Relationship="Self.assembly_user_details_fk" FromRole="ASSEMBLY_AUDITLOGS" ToRole="USERS" />
+    <NavigationProperty Name="EVENT" Relationship="Self.assemblyaudit_event_fk" FromRole="ASSEMBLY_AUDITLOGS" ToRole="EVENTS" />
+  </EntityType>
+  <EntityType Name="COMPONENTTYPE">
+    <Key>
+      <PropertyRef Name="COMPONENTID" />
+    </Key>
+    <Property Name="COMPONENTID" Type="Int32" Nullable="false" />
+    <Property Name="COMPONENTNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="LOCKTABLEs" Relationship="Self.lock_compid_fk" FromRole="COMPONENTTYPE" ToRole="LOCKTABLE" />
+  </EntityType>
+  <EntityType Name="EVENT">
+    <Key>
+      <PropertyRef Name="EVENTID" />
+    </Key>
+    <Property Name="EVENTID" Type="Int32" Nullable="false" />
+    <Property Name="EVENTNAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TABLENAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ASSEMBLY_AUDITLOGS" Relationship="Self.assemblyaudit_event_fk" FromRole="EVENTS" ToRole="ASSEMBLY_AUDITLOGS" />
+    <NavigationProperty Name="ROLE_AUDITLOGS" Relationship="Self.event_role_audit_fk" FromRole="EVENTS" ToRole="ROLE_AUDITLOGS" />
+    <NavigationProperty Name="USERS_AUDITLOGS" Relationship="Self.event_user_details_fk" FromRole="EVENTS" ToRole="USERS_AUDITLOGS" />
+    <NavigationProperty Name="MATERIALS_AUDITLOGS" Relationship="Self.materialsaudit_event_fk" FromRole="EVENTS" ToRole="MATERIALS_AUDITLOGS" />
+  </EntityType>
+  <EntityType Name="LOCKTABLE">
+    <Key>
+      <PropertyRef Name="LOCKID" />
+    </Key>
+    <Property Name="LOCKID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SESSIONID" Type="Int64" Nullable="false" />
+    <Property Name="COMPONENTID" Type="Int32" Nullable="false" />
+    <Property Name="COMPINSTID" Type="Int64" Nullable="false" />
+    <Property Name="LOCKEDON" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="COMPONENTTYPE" Relationship="Self.lock_compid_fk" FromRole="LOCKTABLE" ToRole="COMPONENTTYPE" />
+  </EntityType>
+  <EntityType Name="MATERIAL_COSTING">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UNITCOST" Type="Double" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MATERIAL" Relationship="Self.cost_id_fk" FromRole="MATERIAL_COSTING" ToRole="MATERIALS" />
+  </EntityType>
+  <EntityType Name="MATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+    <Property Name="CostId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ASSEMBLY" Relationship="Self.rel_material_id_fk" FromRole="MATERIALS" ToRole="ASSEMBLY" />
+    <NavigationProperty Name="MATERIAL_COSTING" Relationship="Self.cost_id_fk" FromRole="MATERIALS" ToRole="MATERIAL_COSTING" />
+  </EntityType>
+  <EntityType Name="MATERIALS_AUDITLOGS">
+    <Key>
+      <PropertyRef Name="AUDITID" />
+    </Key>
+    <Property Name="AUDITID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="LOGDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EVENTID" Type="Int32" Nullable="false" />
+    <Property Name="COMPINSTID" Type="Int32" Nullable="false" />
+    <Property Name="FIELDNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NEW_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OLD_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EVENT" Relationship="Self.materialsaudit_event_fk" FromRole="MATERIALS_AUDITLOGS" ToRole="EVENTS" />
+    <NavigationProperty Name="USER" Relationship="Self.materials_user_details_fk" FromRole="MATERIALS_AUDITLOGS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="ROLE">
+    <Key>
+      <PropertyRef Name="ROLEID" />
+    </Key>
+    <Property Name="ROLEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLENAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ROLEDESC" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="APPLICATIONSESSIONs" Relationship="Self.role_id_fk" FromRole="ROLE" ToRole="APPLICATIONSESSION" />
+    <NavigationProperty Name="ROLEPERMISSIONs" Relationship="Self.role_permission_fk" FromRole="ROLE" ToRole="ROLEPERMISSION" />
+    <NavigationProperty Name="USERROLEs" Relationship="Self.role_userrole_fk" FromRole="ROLE" ToRole="USERROLE" />
+    <NavigationProperty Name="USERDETAILS" Relationship="Self.user_default_role_fk" FromRole="ROLE" ToRole="USERDETAILS" />
+  </EntityType>
+  <EntityType Name="ROLE_AUDITLOGS">
+    <Key>
+      <PropertyRef Name="AUDITID" />
+    </Key>
+    <Property Name="AUDITID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="LOGDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EVENTID" Type="Int32" Nullable="false" />
+    <Property Name="COMPINSTID" Type="Int32" Nullable="false" />
+    <Property Name="FIELDNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NEW_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OLD_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EVENT" Relationship="Self.event_role_audit_fk" FromRole="ROLE_AUDITLOGS" ToRole="EVENTS" />
+    <NavigationProperty Name="USER" Relationship="Self.user_role_audit_fk" FromRole="ROLE_AUDITLOGS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="ROLEPERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROLEID" Type="Int32" Nullable="false" />
+    <Property Name="COMPTYPEID" Type="Int32" Nullable="false" />
+    <Property Name="SEQNO" Type="Int32" Nullable="false" />
+    <Property Name="PMASK" Type="Int64" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ROLE" Relationship="Self.role_permission_fk" FromRole="ROLEPERMISSION" ToRole="ROLE" />
+  </EntityType>
+  <EntityType Name="USERDETAIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MIDDLENAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FAILEDLOGCOUNT" Type="Int32" Nullable="false" />
+    <Property Name="ENABLED" Type="Boolean" Nullable="false" />
+    <Property Name="DEFAULTROLE" Type="Int32" />
+    <NavigationProperty Name="ROLE" Relationship="Self.user_default_role_fk" FromRole="USERDETAILS" ToRole="ROLE" />
+    <NavigationProperty Name="USER" Relationship="Self.user_fk" FromRole="USERDETAILS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USERROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="ROLEID" Type="Int32" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ROLE" Relationship="Self.role_userrole_fk" FromRole="USERROLE" ToRole="ROLE" />
+    <NavigationProperty Name="USER" Relationship="Self.user_role_fk" FromRole="USERROLE" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="APPLICATIONSESSIONs" Relationship="Self.user_id_fk" FromRole="USERS" ToRole="APPLICATIONSESSION" />
+    <NavigationProperty Name="ASSEMBLY_AUDITLOGS" Relationship="Self.assembly_user_details_fk" FromRole="USERS" ToRole="ASSEMBLY_AUDITLOGS" />
+    <NavigationProperty Name="MATERIALS_AUDITLOGS" Relationship="Self.materials_user_details_fk" FromRole="USERS" ToRole="MATERIALS_AUDITLOGS" />
+    <NavigationProperty Name="ROLE_AUDITLOGS" Relationship="Self.user_role_audit_fk" FromRole="USERS" ToRole="ROLE_AUDITLOGS" />
+    <NavigationProperty Name="USERDETAILS" Relationship="Self.user_fk" FromRole="USERS" ToRole="USERDETAILS" />
+    <NavigationProperty Name="USERROLEs" Relationship="Self.user_role_fk" FromRole="USERS" ToRole="USERROLE" />
+    <NavigationProperty Name="USERS_AUDITLOGS" Relationship="Self.user_details_fk" FromRole="USERS" ToRole="USERS_AUDITLOGS" />
+  </EntityType>
+  <EntityType Name="USERS_AUDITLOGS">
+    <Key>
+      <PropertyRef Name="AUDITID" />
+    </Key>
+    <Property Name="AUDITID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="LOGDATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EVENTID" Type="Int32" Nullable="false" />
+    <Property Name="COMPINSTID" Type="Int32" Nullable="false" />
+    <Property Name="FIELDNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NEW_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OLD_VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EVENT" Relationship="Self.event_user_details_fk" FromRole="USERS_AUDITLOGS" ToRole="EVENTS" />
+    <NavigationProperty Name="USER" Relationship="Self.user_details_fk" FromRole="USERS_AUDITLOGS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_Applications">
+    <Key>
+      <PropertyRef Name="ApplicationName" />
+      <PropertyRef Name="LoweredApplicationName" />
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredApplicationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_MembershipUsers">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="PasswordFormat" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="IsLockedOut" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="LastLoginDate" />
+      <PropertyRef Name="LastPasswordChangedDate" />
+      <PropertyRef Name="LastLockoutDate" />
+      <PropertyRef Name="FailedPasswordAttemptCount" />
+      <PropertyRef Name="FailedPasswordAttemptWindowStart" />
+      <PropertyRef Name="FailedPasswordAnswerAttemptCount" />
+      <PropertyRef Name="FailedPasswordAnswerAttemptWindowStart" />
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="IsAnonymous" />
+      <PropertyRef Name="LastActivityDate" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+    <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_Profiles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="LastUpdatedDate" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DataSize" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_Roles">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="LoweredRoleName" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredRoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_Users">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="LoweredUserName" />
+      <PropertyRef Name="IsAnonymous" />
+      <PropertyRef Name="LastActivityDate" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_WebPartState_Paths">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="PathId" />
+      <PropertyRef Name="Path" />
+      <PropertyRef Name="LoweredPath" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_WebPartState_Shared">
+    <Key>
+      <PropertyRef Name="PathId" />
+      <PropertyRef Name="LastUpdatedDate" />
+    </Key>
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="DataSize" Type="Int32" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="vw_aspnet_WebPartState_User">
+    <Key>
+      <PropertyRef Name="LastUpdatedDate" />
+    </Key>
+    <Property Name="PathId" Type="Guid" />
+    <Property Name="UserId" Type="Guid" />
+    <Property Name="DataSize" Type="Int32" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="role_id_fk">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+    <End Role="APPLICATIONSESSION" Type="Self.APPLICATIONSESSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="APPLICATIONSESSION">
+        <PropertyRef Name="ROLEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_id_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="APPLICATIONSESSION" Type="Self.APPLICATIONSESSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="APPLICATIONSESSION">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Me__Appli__4A8310C6">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pa__Appli__4B422AD5">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Paths">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Ro__Appli__345EC57D">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Roles">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Us__Appli__1CBC4616">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Users">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Me__UserI__4B7734FF">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__52E34C9D">
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="1" />
+    <End Role="aspnet_PersonalizationAllUsers" Type="Self.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationAllUsers">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__589C25F3">
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="0..1" />
+    <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__UserI__59904A2C">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="0..1" />
+    <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pr__UserI__28ED12D1">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_Profile" Type="Self.aspnet_Profile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="rel_material_id_fk">
+    <End Role="MATERIALS" Type="Self.MATERIAL" Multiplicity="1" />
+    <End Role="ASSEMBLY" Type="Self.ASSEMBLY" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ASSEMBLY">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="assembly_user_details_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="ASSEMBLY_AUDITLOGS" Type="Self.ASSEMBLY_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="ASSEMBLY_AUDITLOGS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="assemblyaudit_event_fk">
+    <End Role="EVENTS" Type="Self.EVENT" Multiplicity="1" />
+    <End Role="ASSEMBLY_AUDITLOGS" Type="Self.ASSEMBLY_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTS">
+        <PropertyRef Name="EVENTID" />
+      </Principal>
+      <Dependent Role="ASSEMBLY_AUDITLOGS">
+        <PropertyRef Name="EVENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lock_compid_fk">
+    <End Role="COMPONENTTYPE" Type="Self.COMPONENTTYPE" Multiplicity="1" />
+    <End Role="LOCKTABLE" Type="Self.LOCKTABLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPONENTTYPE">
+        <PropertyRef Name="COMPONENTID" />
+      </Principal>
+      <Dependent Role="LOCKTABLE">
+        <PropertyRef Name="COMPONENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="event_role_audit_fk">
+    <End Role="EVENTS" Type="Self.EVENT" Multiplicity="1" />
+    <End Role="ROLE_AUDITLOGS" Type="Self.ROLE_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTS">
+        <PropertyRef Name="EVENTID" />
+      </Principal>
+      <Dependent Role="ROLE_AUDITLOGS">
+        <PropertyRef Name="EVENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="event_user_details_fk">
+    <End Role="EVENTS" Type="Self.EVENT" Multiplicity="1" />
+    <End Role="USERS_AUDITLOGS" Type="Self.USERS_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTS">
+        <PropertyRef Name="EVENTID" />
+      </Principal>
+      <Dependent Role="USERS_AUDITLOGS">
+        <PropertyRef Name="EVENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="materialsaudit_event_fk">
+    <End Role="EVENTS" Type="Self.EVENT" Multiplicity="1" />
+    <End Role="MATERIALS_AUDITLOGS" Type="Self.MATERIALS_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EVENTS">
+        <PropertyRef Name="EVENTID" />
+      </Principal>
+      <Dependent Role="MATERIALS_AUDITLOGS">
+        <PropertyRef Name="EVENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cost_id_fk">
+    <End Role="MATERIAL_COSTING" Type="Self.MATERIAL_COSTING" Multiplicity="1" />
+    <End Role="MATERIALS" Type="Self.MATERIAL" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL_COSTING">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MATERIALS">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="materials_user_details_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="MATERIALS_AUDITLOGS" Type="Self.MATERIALS_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="MATERIALS_AUDITLOGS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="role_permission_fk">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+    <End Role="ROLEPERMISSION" Type="Self.ROLEPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="ROLEPERMISSION">
+        <PropertyRef Name="ROLEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="role_userrole_fk">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+    <End Role="USERROLE" Type="Self.USERROLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="USERROLE">
+        <PropertyRef Name="ROLEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_default_role_fk">
+    <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+    <End Role="USERDETAILS" Type="Self.USERDETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLE">
+        <PropertyRef Name="ROLEID" />
+      </Principal>
+      <Dependent Role="USERDETAILS">
+        <PropertyRef Name="DEFAULTROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_role_audit_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="ROLE_AUDITLOGS" Type="Self.ROLE_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="ROLE_AUDITLOGS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="USERDETAILS" Type="Self.USERDETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="USERDETAILS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_role_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="USERROLE" Type="Self.USERROLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="USERROLE">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="user_details_fk">
+    <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+    <End Role="USERS_AUDITLOGS" Type="Self.USERS_AUDITLOGS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="USERS_AUDITLOGS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="aspnet_UsersInRoles">
+    <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="WynPowerDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="APPLICATIONSESSIONs" EntityType="Self.APPLICATIONSESSION" />
+    <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" />
+    <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" />
+    <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" />
+    <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="Self.aspnet_PersonalizationAllUsers" />
+    <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="Self.aspnet_PersonalizationPerUser" />
+    <EntitySet Name="aspnet_Profile" EntityType="Self.aspnet_Profile" />
+    <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" />
+    <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" />
+    <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" />
+    <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="ASSEMBLies" EntityType="Self.ASSEMBLY" />
+    <EntitySet Name="ASSEMBLY_AUDITLOGS" EntityType="Self.ASSEMBLY_AUDITLOGS" />
+    <EntitySet Name="COMPONENTTYPEs" EntityType="Self.COMPONENTTYPE" />
+    <EntitySet Name="EVENTS" EntityType="Self.EVENT" />
+    <EntitySet Name="LOCKTABLEs" EntityType="Self.LOCKTABLE" />
+    <EntitySet Name="MATERIAL_COSTING" EntityType="Self.MATERIAL_COSTING" />
+    <EntitySet Name="MATERIALS" EntityType="Self.MATERIAL" />
+    <EntitySet Name="MATERIALS_AUDITLOGS" EntityType="Self.MATERIALS_AUDITLOGS" />
+    <EntitySet Name="ROLEs" EntityType="Self.ROLE" />
+    <EntitySet Name="ROLE_AUDITLOGS" EntityType="Self.ROLE_AUDITLOGS" />
+    <EntitySet Name="ROLEPERMISSIONs" EntityType="Self.ROLEPERMISSION" />
+    <EntitySet Name="USERDETAILS" EntityType="Self.USERDETAIL" />
+    <EntitySet Name="USERROLEs" EntityType="Self.USERROLE" />
+    <EntitySet Name="USERS" EntityType="Self.USER" />
+    <EntitySet Name="USERS_AUDITLOGS" EntityType="Self.USERS_AUDITLOGS" />
+    <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" />
+    <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="Self.vw_aspnet_MembershipUsers" />
+    <EntitySet Name="vw_aspnet_Profiles" EntityType="Self.vw_aspnet_Profiles" />
+    <EntitySet Name="vw_aspnet_Roles" EntityType="Self.vw_aspnet_Roles" />
+    <EntitySet Name="vw_aspnet_Users" EntityType="Self.vw_aspnet_Users" />
+    <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="Self.vw_aspnet_UsersInRoles" />
+    <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="Self.vw_aspnet_WebPartState_Paths" />
+    <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="Self.vw_aspnet_WebPartState_Shared" />
+    <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="Self.vw_aspnet_WebPartState_User" />
+    <AssociationSet Name="role_id_fk" Association="Self.role_id_fk">
+      <End Role="ROLE" EntitySet="ROLEs" />
+      <End Role="APPLICATIONSESSION" EntitySet="APPLICATIONSESSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="user_id_fk" Association="Self.user_id_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="APPLICATIONSESSION" EntitySet="APPLICATIONSESSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Me__Appli__4A8310C6" Association="Self.FK__aspnet_Me__Appli__4A8310C6">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pa__Appli__4B422AD5" Association="Self.FK__aspnet_Pa__Appli__4B422AD5">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Ro__Appli__345EC57D" Association="Self.FK__aspnet_Ro__Appli__345EC57D">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Us__Appli__1CBC4616" Association="Self.FK__aspnet_Us__Appli__1CBC4616">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Me__UserI__4B7734FF" Association="Self.FK__aspnet_Me__UserI__4B7734FF">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__52E34C9D" Association="Self.FK__aspnet_Pe__PathI__52E34C9D">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__589C25F3" Association="Self.FK__aspnet_Pe__PathI__589C25F3">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__UserI__59904A2C" Association="Self.FK__aspnet_Pe__UserI__59904A2C">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pr__UserI__28ED12D1" Association="Self.FK__aspnet_Pr__UserI__28ED12D1">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="rel_material_id_fk" Association="Self.rel_material_id_fk">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="ASSEMBLY" EntitySet="ASSEMBLies" />
+    </AssociationSet>
+    <AssociationSet Name="assembly_user_details_fk" Association="Self.assembly_user_details_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="ASSEMBLY_AUDITLOGS" EntitySet="ASSEMBLY_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="assemblyaudit_event_fk" Association="Self.assemblyaudit_event_fk">
+      <End Role="EVENTS" EntitySet="EVENTS" />
+      <End Role="ASSEMBLY_AUDITLOGS" EntitySet="ASSEMBLY_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="lock_compid_fk" Association="Self.lock_compid_fk">
+      <End Role="COMPONENTTYPE" EntitySet="COMPONENTTYPEs" />
+      <End Role="LOCKTABLE" EntitySet="LOCKTABLEs" />
+    </AssociationSet>
+    <AssociationSet Name="event_role_audit_fk" Association="Self.event_role_audit_fk">
+      <End Role="EVENTS" EntitySet="EVENTS" />
+      <End Role="ROLE_AUDITLOGS" EntitySet="ROLE_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="event_user_details_fk" Association="Self.event_user_details_fk">
+      <End Role="EVENTS" EntitySet="EVENTS" />
+      <End Role="USERS_AUDITLOGS" EntitySet="USERS_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="materialsaudit_event_fk" Association="Self.materialsaudit_event_fk">
+      <End Role="EVENTS" EntitySet="EVENTS" />
+      <End Role="MATERIALS_AUDITLOGS" EntitySet="MATERIALS_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="cost_id_fk" Association="Self.cost_id_fk">
+      <End Role="MATERIAL_COSTING" EntitySet="MATERIAL_COSTING" />
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+    </AssociationSet>
+    <AssociationSet Name="materials_user_details_fk" Association="Self.materials_user_details_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="MATERIALS_AUDITLOGS" EntitySet="MATERIALS_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="role_permission_fk" Association="Self.role_permission_fk">
+      <End Role="ROLE" EntitySet="ROLEs" />
+      <End Role="ROLEPERMISSION" EntitySet="ROLEPERMISSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="role_userrole_fk" Association="Self.role_userrole_fk">
+      <End Role="ROLE" EntitySet="ROLEs" />
+      <End Role="USERROLE" EntitySet="USERROLEs" />
+    </AssociationSet>
+    <AssociationSet Name="user_default_role_fk" Association="Self.user_default_role_fk">
+      <End Role="ROLE" EntitySet="ROLEs" />
+      <End Role="USERDETAILS" EntitySet="USERDETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="user_role_audit_fk" Association="Self.user_role_audit_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="ROLE_AUDITLOGS" EntitySet="ROLE_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="user_fk" Association="Self.user_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USERDETAILS" EntitySet="USERDETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="user_role_fk" Association="Self.user_role_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USERROLE" EntitySet="USERROLEs" />
+    </AssociationSet>
+    <AssociationSet Name="user_details_fk" Association="Self.user_details_fk">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USERS_AUDITLOGS" EntitySet="USERS_AUDITLOGS" />
+    </AssociationSet>
+    <AssociationSet Name="aspnet_UsersInRoles" Association="Self.aspnet_UsersInRoles">
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="GetPermissionInTable" IsComposable="true" ReturnType="Collection(WynPowerDbModel.GetPermissionInTable_Result)">
+      <Parameter Name="pmask" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="UDF_RoleDifferencing" IsComposable="true" ReturnType="Collection(WynPowerDbModel.UDF_RoleDifferencing_Result)">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UDF_UserDifferencing" IsComposable="true" ReturnType="Collection(WynPowerDbModel.UDF_UserDifferencing_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="middlename" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_AnyDataInTables" ReturnType="Collection(String)">
+      <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Applications_CreateApplication">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_CheckSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_ChangePasswordQuestionAndAnswer">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPasswordQuestion" Mode="In" Type="String" />
+      <Parameter Name="NewPasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_CreateUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="PasswordQuestion" Mode="In" Type="String" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+      <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_FindUsersByEmail">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="EmailToMatch" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_FindUsersByName">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetAllUsers">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetNumberOfUsersOnline">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="MinutesSinceLastInActive" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetPassword" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetPassword_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetPasswordWithFormat" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetPasswordWithFormat_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByEmail" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByName" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetUserByName_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByUserId" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetUserByUserId_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_ResetPassword">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPassword" Mode="In" Type="String" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_SetPassword">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPassword" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UnlockUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UpdateUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Comment" Mode="In" Type="String" />
+      <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+      <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UpdateUserInfo">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsPasswordCorrect" Mode="In" Type="Boolean" />
+      <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Paths_CreatePath">
+      <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PathId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Personalization_GetApplicationId">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_DeleteAllState">
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_FindState">
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_GetCountOfState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_ResetSharedState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_ResetUserState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_GetPageSettings" ReturnType="Collection(Binary)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_ResetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_SetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_GetPageSettings" ReturnType="Collection(Binary)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_ResetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_SetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_DeleteInactiveProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_DeleteProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetNumberOfInactiveProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetProfiles">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetProperties" ReturnType="Collection(WynPowerDbModel.aspnet_Profile_GetProperties_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_SetProperties">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PropertyNames" Mode="In" Type="String" />
+      <Parameter Name="PropertyValuesString" Mode="In" Type="String" />
+      <Parameter Name="PropertyValuesBinary" Mode="In" Type="Binary" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_RegisterSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+      <Parameter Name="IsCurrentVersion" Mode="In" Type="Boolean" />
+      <Parameter Name="RemoveIncompatibleSchema" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_CreateRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_DeleteRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+      <Parameter Name="DeleteOnlyIfRoleIsEmpty" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_GetAllRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_RoleExists">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Setup_RemoveAllRoleMembers">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Setup_RestorePermissions">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UnRegisterSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Users_CreateUser">
+      <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Users_DeleteUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="TablesToDeleteFrom" Mode="In" Type="Int32" />
+      <Parameter Name="NumTablesDeletedFrom" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_AddUsersToRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+      <Parameter Name="RoleNames" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_FindUsersInRole" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_GetRolesForUser" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_GetUsersInRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_IsUserInRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_RemoveUsersFromRoles" ReturnType="Collection(WynPowerDbModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+      <Parameter Name="RoleNames" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_WebEvent_LogEvent">
+      <Parameter Name="EventId" Mode="In" Type="String" />
+      <Parameter Name="EventTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="EventTime" Mode="In" Type="DateTime" />
+      <Parameter Name="EventType" Mode="In" Type="String" />
+      <Parameter Name="EventSequence" Mode="In" Type="Decimal" />
+      <Parameter Name="EventOccurrence" Mode="In" Type="Decimal" />
+      <Parameter Name="EventCode" Mode="In" Type="Int32" />
+      <Parameter Name="EventDetailCode" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="ApplicationPath" Mode="In" Type="String" />
+      <Parameter Name="ApplicationVirtualPath" Mode="In" Type="String" />
+      <Parameter Name="MachineName" Mode="In" Type="String" />
+      <Parameter Name="RequestUrl" Mode="In" Type="String" />
+      <Parameter Name="ExceptionType" Mode="In" Type="String" />
+      <Parameter Name="Details" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CheckForUpdate">
+      <Parameter Name="componentid" Mode="In" Type="Int32" />
+      <Parameter Name="compinstid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveForUpdate">
+      <Parameter Name="componentid" Mode="In" Type="Int32" />
+      <Parameter Name="compinstid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ActivateAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActivateMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddApplicationSession">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="client_ipaddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="classification" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="unitPrice" Mode="In" Type="Double" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddMaterialToAssembly">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddRole">
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddUser">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="middlename" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="currentuser" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AssignRoleToUser" ReturnType="Collection(WynPowerDbModel.USP_AssignRoleToUser_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="defaultroleid" Mode="In" Type="Int32" />
+      <Parameter Name="xmlroles" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AuthenticateUser">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ChangePassword">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="oldpassword" Mode="In" Type="String" />
+      <Parameter Name="newpassword" Mode="In" Type="String" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DeleteRole">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DeleteUser">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="EditAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="classification" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EditMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="unitPrice" Mode="In" Type="Double" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_EditRole">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_EditUser">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="middlename" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_EnableDisableUser">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="enabled" Mode="In" Type="Boolean" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_IsUserCurrentlyLogin" ReturnType="Collection(WynPowerDbModel.USP_IsUserCurrentlyLogin_Result)">
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveApplicationSession">
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveCostToMaterial">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="unitCost" Mode="In" Type="Double" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveMaterialFromAssembly">
+      <Parameter Name="materialAssemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ResetFailedLogCount">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RetireAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RetireMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveActiveMaterialDetails" ReturnType="Collection(WynPowerDbModel.USP_RetrieveActiveMaterialDetails_Result)">
+      <Parameter Name="materialCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveAllActiveMaterials" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAllActiveMaterials_Result)" />
+    <FunctionImport Name="USP_RetrieveAllAssemblyDetails" />
+    <FunctionImport Name="RetrieveAllMaterials" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAllMaterials_Result)" />
+    <FunctionImport Name="RetrieveAssemblyDetails" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAssemblyDetails_Result)" />
+    <FunctionImport Name="USP_RetrieveMaterialDetails">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrievePassword" ReturnType="Collection(String)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveRole" ReturnType="Collection(WynPowerDbModel.USP_RetrieveRole_Result)">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveRoleForUpdate" ReturnType="Collection(WynPowerDbModel.USP_RetrieveRoleForUpdate_Result)">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveRoles" ReturnType="Collection(WynPowerDbModel.USP_RetrieveRoles_Result)" />
+    <FunctionImport Name="USP_RetrieveUserDetails" ReturnType="Collection(WynPowerDbModel.USP_RetrieveUserDetails_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveUserForUpdate" ReturnType="Collection(WynPowerDbModel.USP_RetrieveUserForUpdate_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SearchRole" ReturnType="Collection(WynPowerDbModel.USP_SearchRole_Result)">
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="roledesc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SearchUser" ReturnType="Collection(WynPowerDbModel.USP_SearchUser_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SetFailedLogCount">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="maxfailedlogcount" Mode="In" Type="Int32" />
+      <Parameter Name="disabled" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SetRolePermission">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="permissionmask" Mode="In" Type="Int64" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveAssemblyDetailsById" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAssemblyDetailsById_Result)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="aspnet_Membership_GetPassword_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column2" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column2" Nullable="true" />
+    <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column4" Nullable="true" />
+    <Property Type="Int32" Name="Column5" Nullable="true" />
+    <Property Type="Boolean" Name="Column6" Nullable="true" />
+    <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetUserByName_Result">
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Profile_GetProperties_Result">
+    <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
+    <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+    <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="USP_AssignRoleToUser_Result">
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="Int32" Name="code" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_IsUserCurrentlyLogin_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="DateTime" Name="login_time" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveActiveMaterialDetails_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveRole_Result">
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="String" Name="rolename" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="roledesc" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveRoleForUpdate_Result">
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="String" Name="rolename" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="roledesc" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveRoles_Result">
+    <Property Type="Int32" Name="Column1" Nullable="false" />
+    <Property Type="String" Name="Column2" Nullable="false" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveUserDetails_Result">
+    <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="firstname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="middlename" Nullable="true" MaxLength="32" />
+    <Property Type="Boolean" Name="enabled" Nullable="false" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveUserForUpdate_Result">
+    <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="firstname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="middlename" Nullable="true" MaxLength="32" />
+  </ComplexType>
+  <ComplexType Name="USP_SearchRole_Result">
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="String" Name="rolename" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="roledesc" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="USP_SearchUser_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="firstname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="middlename" Nullable="true" MaxLength="32" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="32" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAllActiveMaterials_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAllMaterials_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAssemblyDetailsById_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Classification" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Double" Name="BasePrice" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="5" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAssemblyDetails_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Classification" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Double" Name="BasePrice" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="5" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+  </ComplexType>
+</Schema>

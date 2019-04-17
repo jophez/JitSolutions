@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-03-29" time="21:12:49">
+  <environment nunit-version="2.5.5.10112" clr-version="2.0.50727.5472" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug" machine-name="HITERU-PC" user="Hiteru" user-domain="Hiteru-PC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll" executed="True" result="Success" success="True" time="18.014" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="TEntS" executed="True" result="Success" success="True" time="17.994" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Test" executed="True" result="Success" success="True" time="17.990" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SessionTest" executed="True" result="Success" success="True" time="17.989" asserts="0">
+                <results>
+                  <test-case name="TEntS.Test.SessionTest.Test_Login" executed="True" result="Success" success="True" time="17.958" asserts="0" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

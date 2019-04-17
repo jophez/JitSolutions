@@ -1,0 +1,51 @@
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.BLL.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Types.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.BLL.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Types.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll.config
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\nunit.mocks.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.xml
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll.config
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.pdb
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.mocks.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.BLL.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Types.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.BLL.pdb
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Types.pdb
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.xml
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll.config
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Test.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\Castle.Core.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\Moq.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.mocks.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\System.ValueTuple.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.BLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\Castle.Core.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\Moq.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\Moq.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\nunit.framework.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\bin\Debug\System.ValueTuple.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.Test\obj\Debug\TEntS.Test.pdb

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication.Models.AssemblyModels>
+
+@Html.AntiForgeryToken()
+
+<div class="box box-success box-solid" role="dialog" tabindex="-1" id="modal-pole-asselmbly">
+     <div class="box-header">
+          <button type="button" onclick="ResetValues()" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+          </button>
+          <h4>Assembly List</h4>
+     </div>
+     <hr />
+     <div id="errorMessagePoleAssembly"></div>
+     <div class="box-group">
+          <div class="box-body" style="overflow-y:scroll">
+               <fieldset id="modal-assembly">
+                    <table id="poleAssemblyTblItems" class="table table-bordered table-striped active">
+                         @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+                              {
+                              <thead>
+                              <th></th>
+                              <th>Name</th>
+                              <th>Classification</th>
+                              <th>Quantity</th>
+                              <th>Base Price</th>
+                              <th>Amount</th>
+                              </thead>     }
+                         else
+                              {
+                              <thead>
+                              <th></th>
+                              <th>Name</th>
+                              <th>Classification</th>
+                              <th>Quantity</th>
+                              </thead>}
+                         <tbody>
+                              @foreach (var item in Model)
+                                   {
+                                   <tr>
+                                        <td><input type="checkbox" id="@item.Id" name="checkAssembly" /></td>
+                                        <td>@item.Name</td>
+                                        <td>@item.Classification</td>
+                                        <td><input type="number" name="assemblyQty" id="assemblyQty_@item.Id" onkeyup="CalculateAssemblyPrice(@item.Id)" class="form-control" value="@item.Quantity" /></td>
+                                        @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+                                             {
+                                             <td><input type="text" id="unitPrice_@item.Id" class="form-control" disabled="disabled" value=@item.UnitPrice /></td>
+                                             <td><input type="text" name="assemblyAmount" id="assemblyAmount_@item.Id" style="width:100px;" value="@item.TotalAmount" class="form-control" disabled="disabled" /></td> }
+                                   </tr>}
+                         </tbody>
+                    </table>
+               </fieldset>
+          </div>
+          <div class="box-footer">
+               <div class="pull-left footer">
+                    <button type="button" value="Save" data-dissmiss="modal" class="btn btn-primary" id="btnPersistAssembliesToPole" onclick="PersistAssembliesToPole(); ResetValues();ClosePopup()">Save</button>
+                    <button type="button" value="Cancel" data-dissmiss="modal" class="customm-close" onclick="ResetValues();ClosePopup()">Cancel</button>
+               </div>
+          </div>
+     </div>
+</div>

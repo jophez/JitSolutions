@@ -1,0 +1,24 @@
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\TEntS.DataContext.dll.config
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\TEntS.DataContext.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\TEntS.DataContext.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\EntityFramework.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\EntityFramework.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\obj\Debug\TEntS.DataContext.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\obj\Debug\TEntS.DataContext.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.DataContext\obj\Debug\TEntS.DataContext.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\TEntS.DataContext.dll.config
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\TEntS.DataContext.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\TEntS.DataContext.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\EntityFramework.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\EntityFramework.SqlServer.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\EntityFramework.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\bin\Debug\EntityFramework.SqlServer.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\obj\Debug\TEntS.DataContext.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\obj\Debug\TEntS.DataContext.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.DataContext\obj\Debug\TEntS.DataContext.pdb

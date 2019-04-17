@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WynPowerDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="aspnet_AnyDataInTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TablesToCheck" Type="int" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Applications_CreateApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ApplicationId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_CheckSchemaVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Feature" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompatibleSchemaVersion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_ChangePasswordQuestionAndAnswer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewPasswordQuestion" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewPasswordAnswer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="PasswordSalt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="PasswordQuestion" Type="nvarchar" Mode="In" />
+    <Parameter Name="PasswordAnswer" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="UniqueEmail" Type="int" Mode="In" />
+    <Parameter Name="PasswordFormat" Type="int" Mode="In" />
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_Membership_FindUsersByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailToMatch" Type="nvarchar" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_FindUsersByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserNameToMatch" Type="nvarchar" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetNumberOfUsersOnline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MinutesSinceLastInActive" Type="int" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaxInvalidPasswordAttempts" Type="int" Mode="In" />
+    <Parameter Name="PasswordAttemptWindow" Type="int" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="PasswordAnswer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetPasswordWithFormat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UpdateLastLoginActivityDate" Type="bit" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetUserByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetUserByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="UpdateLastActivity" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_GetUserByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="UpdateLastActivity" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_ResetPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaxInvalidPasswordAttempts" Type="int" Mode="In" />
+    <Parameter Name="PasswordAttemptWindow" Type="int" Mode="In" />
+    <Parameter Name="PasswordSalt" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="PasswordFormat" Type="int" Mode="In" />
+    <Parameter Name="PasswordAnswer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_SetPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="PasswordSalt" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="PasswordFormat" Type="int" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_UnlockUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Comment" Type="ntext" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="LastLoginDate" Type="datetime" Mode="In" />
+    <Parameter Name="LastActivityDate" Type="datetime" Mode="In" />
+    <Parameter Name="UniqueEmail" Type="int" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Membership_UpdateUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsPasswordCorrect" Type="bit" Mode="In" />
+    <Parameter Name="UpdateLastLoginActivityDate" Type="bit" Mode="In" />
+    <Parameter Name="MaxInvalidPasswordAttempts" Type="int" Mode="In" />
+    <Parameter Name="PasswordAttemptWindow" Type="int" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="LastLoginDate" Type="datetime" Mode="In" />
+    <Parameter Name="LastActivityDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Paths_CreatePath" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="PathId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_Personalization_GetApplicationId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ApplicationId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAdministration_DeleteAllState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AllUsersScope" Type="bit" Mode="In" />
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Count" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAdministration_FindState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AllUsersScope" Type="bit" Mode="In" />
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="InactiveSinceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAdministration_GetCountOfState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Count" Type="int" Mode="InOut" />
+    <Parameter Name="AllUsersScope" Type="bit" Mode="In" />
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="InactiveSinceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAdministration_ResetSharedState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Count" Type="int" Mode="InOut" />
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAdministration_ResetUserState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Count" Type="int" Mode="InOut" />
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="InactiveSinceDate" Type="datetime" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAllUsers_GetPageSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAllUsers_ResetPageSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationAllUsers_SetPageSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="PageSettings" Type="image" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationPerUser_GetPageSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationPerUser_ResetPageSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_PersonalizationPerUser_SetPageSettings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="PageSettings" Type="image" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Profile_DeleteInactiveProfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProfileAuthOptions" Type="int" Mode="In" />
+    <Parameter Name="InactiveSinceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Profile_DeleteProfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserNames" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Profile_GetNumberOfInactiveProfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProfileAuthOptions" Type="int" Mode="In" />
+    <Parameter Name="InactiveSinceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Profile_GetProfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProfileAuthOptions" Type="int" Mode="In" />
+    <Parameter Name="PageIndex" Type="int" Mode="In" />
+    <Parameter Name="PageSize" Type="int" Mode="In" />
+    <Parameter Name="UserNameToMatch" Type="nvarchar" Mode="In" />
+    <Parameter Name="InactiveSinceDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Profile_GetProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Profile_SetProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PropertyNames" Type="ntext" Mode="In" />
+    <Parameter Name="PropertyValuesString" Type="ntext" Mode="In" />
+    <Parameter Name="PropertyValuesBinary" Type="image" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsUserAnonymous" Type="bit" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_RegisterSchemaVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Feature" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompatibleSchemaVersion" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsCurrentVersion" Type="bit" Mode="In" />
+    <Parameter Name="RemoveIncompatibleSchema" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Roles_CreateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Roles_DeleteRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeleteOnlyIfRoleIsEmpty" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Roles_GetAllRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Roles_RoleExists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Setup_RemoveAllRoleMembers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Setup_RestorePermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_UnRegisterSchemaVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Feature" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompatibleSchemaVersion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_Users_CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsUserAnonymous" Type="bit" Mode="In" />
+    <Parameter Name="LastActivityDate" Type="datetime" Mode="In" />
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_Users_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TablesToDeleteFrom" Type="int" Mode="In" />
+    <Parameter Name="NumTablesDeletedFrom" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="aspnet_UsersInRoles_AddUsersToRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserNames" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleNames" Type="nvarchar" Mode="In" />
+    <Parameter Name="CurrentTimeUtc" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="aspnet_UsersInRoles_FindUsersInRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserNameToMatch" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_UsersInRoles_GetRolesForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_UsersInRoles_GetUsersInRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_UsersInRoles_IsUserInRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_UsersInRoles_RemoveUsersFromRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserNames" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleNames" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="aspnet_WebEvent_LogEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventId" Type="char" Mode="In" />
+    <Parameter Name="EventTimeUtc" Type="datetime" Mode="In" />
+    <Parameter Name="EventTime" Type="datetime" Mode="In" />
+    <Parameter Name="EventType" Type="nvarchar" Mode="In" />
+    <Parameter Name="EventSequence" Type="decimal" Mode="In" />
+    <Parameter Name="EventOccurrence" Type="decimal" Mode="In" />
+    <Parameter Name="EventCode" Type="int" Mode="In" />
+    <Parameter Name="EventDetailCode" Type="int" Mode="In" />
+    <Parameter Name="Message" Type="nvarchar" Mode="In" />
+    <Parameter Name="ApplicationPath" Type="nvarchar" Mode="In" />
+    <Parameter Name="ApplicationVirtualPath" Type="nvarchar" Mode="In" />
+    <Parameter Name="MachineName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RequestUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="ExceptionType" Type="nvarchar" Mode="In" />
+    <Parameter Name="Details" Type="ntext" Mode="In" />
+  </Function>
+  <Function Name="GetPermissionInTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pmask" Type="bigint" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="permission" Type="nvarchar(max)" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="USP_ActivateAssembly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="assemblyId" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_ActivateMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="materialId" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_AddAssembly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="materialId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="classification" Type="varchar" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="unit" Type="varchar" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_AddBoM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="materialId" Type="int" Mode="In" />
+    <Parameter Name="material_quantity" Type="int" Mode="In" />
+    <Parameter Name="bom_quantity" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_AddCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="unitCost" Type="float" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_AddMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="unitPrice" Type="float" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_EditAssembly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="assemblyId" Type="int" Mode="In" />
+    <Parameter Name="materialId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="classification" Type="varchar" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="unit" Type="varchar" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_EditMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="materialId" Type="int" Mode="In" />
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar" Mode="In" />
+    <Parameter Name="costId" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_RemoveCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="costMaterialId" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_RetireAssembly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="assemblyId" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_RetireMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="materialId" Type="int" Mode="In" />
+    <Parameter Name="cur_user" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="USP_RetrieveActiveMaterialDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="materialId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RetrieveAllActiveMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RetrieveAllAssemblyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RetrieveAllMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RetrieveAssemblyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RetrieveAssemblyDetailsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="assemblyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RetrieveMaterialDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="materialId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="WynPowerDbModelStoreContainer" />
+</Schema>

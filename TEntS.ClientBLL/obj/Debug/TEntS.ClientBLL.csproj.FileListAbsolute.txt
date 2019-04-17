@@ -1,0 +1,34 @@
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.ClientBLL.dll.config
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.ClientBLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.ClientBLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\EntityFramework.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.DataContext.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.DataContext.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\EntityFramework.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\obj\Debug\TEntS.ClientBLL.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\obj\Debug\TEntS.ClientBLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\obj\Debug\TEntS.ClientBLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.BLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\Newtonsoft.Json.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL\bin\Debug\Newtonsoft.Json.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.ClientBLL.dll.config
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.ClientBLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.ClientBLL.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\EntityFramework.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\Newtonsoft.Json.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.BLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\EntityFramework.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\bin\Debug\Newtonsoft.Json.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\obj\Debug\TEntS.ClientBLL.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\obj\Debug\TEntS.ClientBLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL\obj\Debug\TEntS.ClientBLL.pdb

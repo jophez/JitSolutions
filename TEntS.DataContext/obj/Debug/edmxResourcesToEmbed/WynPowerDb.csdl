@@ -1,0 +1,779 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WynPowerDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="GetPermissionInTable_Result">
+    <Property Name="permission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <ComplexType Name="UDF_RoleDifferencing_Result">
+    <Property Name="fieldname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="newvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="oldvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="UDF_UserDifferencing_Result">
+    <Property Name="fieldname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="newvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="oldvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityContainer Name="WynPowerDbEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="GetPermissionInTable" IsComposable="true" ReturnType="Collection(WynPowerDbModel.GetPermissionInTable_Result)">
+      <Parameter Name="pmask" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="UDF_RoleDifferencing" IsComposable="true" ReturnType="Collection(WynPowerDbModel.UDF_RoleDifferencing_Result)">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UDF_UserDifferencing" IsComposable="true" ReturnType="Collection(WynPowerDbModel.UDF_UserDifferencing_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="middlename" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_AnyDataInTables" ReturnType="Collection(String)">
+      <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Applications_CreateApplication">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_CheckSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_ChangePasswordQuestionAndAnswer">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPasswordQuestion" Mode="In" Type="String" />
+      <Parameter Name="NewPasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_CreateUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="PasswordQuestion" Mode="In" Type="String" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+      <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_FindUsersByEmail">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="EmailToMatch" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_FindUsersByName">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetAllUsers">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetNumberOfUsersOnline">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="MinutesSinceLastInActive" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetPassword" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetPassword_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetPasswordWithFormat" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetPasswordWithFormat_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByEmail" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByName" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetUserByName_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByUserId" ReturnType="Collection(WynPowerDbModel.aspnet_Membership_GetUserByUserId_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_ResetPassword">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPassword" Mode="In" Type="String" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_SetPassword">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPassword" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UnlockUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UpdateUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Comment" Mode="In" Type="String" />
+      <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+      <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UpdateUserInfo">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsPasswordCorrect" Mode="In" Type="Boolean" />
+      <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Paths_CreatePath">
+      <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PathId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Personalization_GetApplicationId">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_DeleteAllState">
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_FindState">
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_GetCountOfState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_ResetSharedState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_ResetUserState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_GetPageSettings" ReturnType="Collection(Binary)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_ResetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_SetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_GetPageSettings" ReturnType="Collection(Binary)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_ResetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_SetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_DeleteInactiveProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_DeleteProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetNumberOfInactiveProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetProfiles">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetProperties" ReturnType="Collection(WynPowerDbModel.aspnet_Profile_GetProperties_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_SetProperties">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PropertyNames" Mode="In" Type="String" />
+      <Parameter Name="PropertyValuesString" Mode="In" Type="String" />
+      <Parameter Name="PropertyValuesBinary" Mode="In" Type="Binary" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_RegisterSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+      <Parameter Name="IsCurrentVersion" Mode="In" Type="Boolean" />
+      <Parameter Name="RemoveIncompatibleSchema" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_CreateRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_DeleteRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+      <Parameter Name="DeleteOnlyIfRoleIsEmpty" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_GetAllRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_RoleExists">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Setup_RemoveAllRoleMembers">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Setup_RestorePermissions">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UnRegisterSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Users_CreateUser">
+      <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Users_DeleteUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="TablesToDeleteFrom" Mode="In" Type="Int32" />
+      <Parameter Name="NumTablesDeletedFrom" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_AddUsersToRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+      <Parameter Name="RoleNames" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_FindUsersInRole" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_GetRolesForUser" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_GetUsersInRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_IsUserInRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_RemoveUsersFromRoles" ReturnType="Collection(WynPowerDbModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+      <Parameter Name="RoleNames" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_WebEvent_LogEvent">
+      <Parameter Name="EventId" Mode="In" Type="String" />
+      <Parameter Name="EventTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="EventTime" Mode="In" Type="DateTime" />
+      <Parameter Name="EventType" Mode="In" Type="String" />
+      <Parameter Name="EventSequence" Mode="In" Type="Decimal" />
+      <Parameter Name="EventOccurrence" Mode="In" Type="Decimal" />
+      <Parameter Name="EventCode" Mode="In" Type="Int32" />
+      <Parameter Name="EventDetailCode" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="ApplicationPath" Mode="In" Type="String" />
+      <Parameter Name="ApplicationVirtualPath" Mode="In" Type="String" />
+      <Parameter Name="MachineName" Mode="In" Type="String" />
+      <Parameter Name="RequestUrl" Mode="In" Type="String" />
+      <Parameter Name="ExceptionType" Mode="In" Type="String" />
+      <Parameter Name="Details" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CheckForUpdate">
+      <Parameter Name="componentid" Mode="In" Type="Int32" />
+      <Parameter Name="compinstid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveForUpdate">
+      <Parameter Name="componentid" Mode="In" Type="Int32" />
+      <Parameter Name="compinstid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="valid" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ActivateAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ActivateMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddApplicationSession">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="client_ipaddress" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="classification" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="unitPrice" Mode="In" Type="Double" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddMaterialToAssembly">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddRole">
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddUser">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="middlename" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="currentuser" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AssignRoleToUser" ReturnType="Collection(WynPowerDbModel.USP_AssignRoleToUser_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="defaultroleid" Mode="In" Type="Int32" />
+      <Parameter Name="xmlroles" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AuthenticateUser">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ChangePassword">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="oldpassword" Mode="In" Type="String" />
+      <Parameter Name="newpassword" Mode="In" Type="String" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DeleteRole">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DeleteUser">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="EditAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="classification" Mode="In" Type="String" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EditMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="costId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_EditRole">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_EditUser">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="middlename" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_EnableDisableUser">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="enabled" Mode="In" Type="Boolean" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_IsUserCurrentlyLogin" ReturnType="Collection(WynPowerDbModel.USP_IsUserCurrentlyLogin_Result)">
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveApplicationSession">
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveCostToMaterial">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="unitCost" Mode="In" Type="Double" />
+      <Parameter Name="unit" Mode="In" Type="String" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveMaterialFromAssembly">
+      <Parameter Name="materialAssemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_ResetFailedLogCount">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RetireAssembly" ReturnType="Collection(Int32)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RetireMaterial" ReturnType="Collection(Int32)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveAllActiveMaterials" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAllActiveMaterials_Result)" />
+    <FunctionImport Name="RetrieveAllAssemblyDetails" ReturnType="Collection(WynPowerDbModel.RetrieveAllAssemblyDetails_Result)" />
+    <FunctionImport Name="RetrieveAllMaterials" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAllMaterials_Result)" />
+    <FunctionImport Name="RetrieveAssemblyDetails" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAssemblyDetails_Result)" />
+    <FunctionImport Name="RetrieveAssemblyDetailsById" ReturnType="Collection(WynPowerDbModel.USP_RetrieveAssemblyDetailsById_Result)">
+      <Parameter Name="assemblyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveMaterialDetails" ReturnType="Collection(WynPowerDbModel.USP_RetrieveMaterialDetails_Result)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrievePassword" ReturnType="Collection(String)">
+      <Parameter Name="username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveRole" ReturnType="Collection(WynPowerDbModel.USP_RetrieveRole_Result)">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveRoleForUpdate" ReturnType="Collection(WynPowerDbModel.USP_RetrieveRoleForUpdate_Result)">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveRoles" ReturnType="Collection(WynPowerDbModel.USP_RetrieveRoles_Result)" />
+    <FunctionImport Name="USP_RetrieveUserDetails" ReturnType="Collection(WynPowerDbModel.USP_RetrieveUserDetails_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RetrieveUserForUpdate" ReturnType="Collection(WynPowerDbModel.USP_RetrieveUserForUpdate_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SearchRole" ReturnType="Collection(WynPowerDbModel.USP_SearchRole_Result)">
+      <Parameter Name="rolename" Mode="In" Type="String" />
+      <Parameter Name="roledesc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SearchUser" ReturnType="Collection(WynPowerDbModel.USP_SearchUser_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SetFailedLogCount">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="maxfailedlogcount" Mode="In" Type="Int32" />
+      <Parameter Name="disabled" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_SetRolePermission">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="permissionmask" Mode="In" Type="Int64" />
+      <Parameter Name="sessionid" Mode="In" Type="Int64" />
+      <Parameter Name="lockduration" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="Int32" />
+      <Parameter Name="lockstatus" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="RetrieveActiveMaterialDetailsById" ReturnType="Collection(WynPowerDbModel.USP_RetrieveActiveMaterialDetailsById_Result)">
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddBoM" ReturnType="Collection(Int32)">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="materialId" Mode="In" Type="Int32" />
+      <Parameter Name="material_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="bom_quantity" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_AddCost">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="unitCost" Mode="In" Type="Double" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RemoveCost">
+      <Parameter Name="costMaterialId" Mode="In" Type="Int32" />
+      <Parameter Name="cur_user" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="aspnet_Membership_GetPassword_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column2" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column2" Nullable="true" />
+    <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column4" Nullable="true" />
+    <Property Type="Int32" Name="Column5" Nullable="true" />
+    <Property Type="Boolean" Name="Column6" Nullable="true" />
+    <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetUserByName_Result">
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Profile_GetProperties_Result">
+    <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
+    <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+    <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="USP_AssignRoleToUser_Result">
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="Int32" Name="code" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_IsUserCurrentlyLogin_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="DateTime" Name="login_time" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveActiveMaterialDetails_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAllActiveMaterials_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAllMaterials_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAssemblyDetails_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Classification" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Double" Name="BasePrice" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="5" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAssemblyDetailsById_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Classification" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Double" Name="BasePrice" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="5" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveMaterialDetails_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveRole_Result">
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="String" Name="rolename" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="roledesc" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveRoleForUpdate_Result">
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="String" Name="rolename" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="roledesc" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveRoles_Result">
+    <Property Type="Int32" Name="Column1" Nullable="false" />
+    <Property Type="String" Name="Column2" Nullable="false" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveUserDetails_Result">
+    <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="firstname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="middlename" Nullable="true" MaxLength="32" />
+    <Property Type="Boolean" Name="enabled" Nullable="false" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveUserForUpdate_Result">
+    <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="firstname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="middlename" Nullable="true" MaxLength="32" />
+  </ComplexType>
+  <ComplexType Name="USP_SearchRole_Result">
+    <Property Type="Int32" Name="roleid" Nullable="false" />
+    <Property Type="String" Name="rolename" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="roledesc" Nullable="true" MaxLength="512" />
+  </ComplexType>
+  <ComplexType Name="USP_SearchUser_Result">
+    <Property Type="Int32" Name="userid" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="firstname" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="middlename" Nullable="true" MaxLength="32" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="32" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RetrieveAllAssemblyDetails_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Classification" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Double" Name="BasePrice" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveActiveMaterialDetailsById_Result">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="23" />
+    <Property Type="Double" Name="Cost" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RetrieveAssemblyDetailsById_Result1">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="Classification" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Double" Name="BasePrice" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+  </ComplexType>
+</Schema>

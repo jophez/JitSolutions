@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\AuditTrail\bin\Debug\AuditTrail.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\AuditTrail\bin\Debug\AuditTrail.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\AuditTrail\obj\Debug\AuditTrail.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\AuditTrail\obj\Debug\AuditTrail.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\AuditTrail\obj\Debug\AuditTrail.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\AuditTrail\bin\Debug\AuditTrail.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\AuditTrail\bin\Debug\AuditTrail.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\AuditTrail\obj\Debug\AuditTrail.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\AuditTrail\obj\Debug\AuditTrail.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\AuditTrail\obj\Debug\AuditTrail.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\TEntS.Solution\AuditTrail\bin\Debug\AuditTrail.dll
+C:\JiTSolutions\TEntS.Solution\AuditTrail\bin\Debug\AuditTrail.pdb
+C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Debug\AuditTrail.dll
+C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Debug\AuditTrail.pdb
+C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Debug\AuditTrail.csprojResolveAssemblyReference.cache

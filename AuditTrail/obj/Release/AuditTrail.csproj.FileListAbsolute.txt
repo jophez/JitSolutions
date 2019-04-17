@@ -1,0 +1,4 @@
+C:\JiTSolutions\TEntS.Solution\AuditTrail\bin\Release\AuditTrail.dll
+C:\JiTSolutions\TEntS.Solution\AuditTrail\bin\Release\AuditTrail.pdb
+C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Release\AuditTrail.dll
+C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Release\AuditTrail.pdb

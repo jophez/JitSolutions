@@ -1,0 +1,128 @@
+﻿@model WebApplication.Models.MarkupModel
+@{
+     ViewBag.Title = "Edit Markup";
+}
+
+<div class="col-sm-6 col-lg-6 col-md-6">
+     <div class="panel panel-primary">
+          <div class="panel-heading">
+               <h4>Edit Markup</h4>
+               @Html.ActionLink("Return to Markup Manager", "Index", "Markups")
+          </div>
+          <div class="panel-body">
+               @using (Html.BeginForm())
+                    {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <div>
+                         @Html.HiddenFor(model => model.Id)
+                         @Html.HiddenFor(model => model.Code)
+                         <dl class="dl-horizontal">
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Code)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Code, new { disabled = "disabled" })
+                                   @Html.ValidationMessageFor(model => model.Code, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Administrative)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Administrative, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Administrative, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Contingency)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Contingency, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Contingency, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.DirectLabor)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.DirectLabor, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.DirectLabor, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Equipment)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Equipment, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Equipment, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Marketing)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Marketing, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Marketing, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Markup)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Markup, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Markup, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Representation)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Representation, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Representation, "*")
+                              </dd>
+
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Vat_Ewt)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Vat_Ewt, new { type = "number" })
+                                   @Html.ValidationMessageFor(model => model.Vat_Ewt, "*")
+                              </dd>
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Generic1)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Generic1, new { type = "number" })
+                              </dd>
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Generic2)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Generic2, new { type = "number" })
+                              </dd>
+                              <dt>
+                                   @Html.DisplayNameFor(model => model.Generic3)
+                              </dt>
+
+                              <dd>
+                                   @Html.TextBoxFor(model => model.Generic3, new { type = "number" })
+                              </dd>
+                         </dl>
+                         <input type="submit" value="Save" />
+                    </div>
+                    }
+          </div>
+     </div>
+</div>

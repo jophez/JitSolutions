@@ -1,0 +1,119 @@
+﻿@model WebApplication.Models.BomModels
+@using (Html.BeginForm())
+     {
+     @Html.AntiForgeryToken();
+                         <div class="box box-warning box-solid" role="dialog" tabindex="-1" id="modal-bom-edit">
+                              <div class="box-header">
+                                   <h4>Edit Bill of Materials</h4>
+                              </div>
+                              <hr />
+                              <div id="errorMessage">
+                              </div>
+                              <div class="box-group">
+                                   <div class="box-body">
+                                        <fieldset id="modal-bom">
+                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                             <div class="hidden">
+                                                  @Html.Hidden("Id", @Model.Id)
+                                                  @Html.Hidden("BomId", @Model.Code)
+                                             </div>
+                                             <div class="box-group">
+                                                  @Html.LabelFor(model => model.ProjectInfo.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                  <div class="col-md-4">
+                                                       @Html.EditorFor(model => model.ProjectInfo.Name, new { htmlAttributes = new { @class = "form-control", Id = "pName" } })
+                                                       @Html.ValidationMessageFor(model => model.ProjectInfo.Name, "", new { @class = "text-danger" })
+                                                  </div>
+                                             </div>
+                                             <div class="box-group">
+                                                  @Html.LabelFor(model => model.ProjectInfo.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                  <div class="col-md-4">
+                                                       @Html.EditorFor(model => model.ProjectInfo.Location, new { htmlAttributes = new { @class = "form-control", Id = "pLocation" } })
+                                                       @Html.ValidationMessageFor(model => model.ProjectInfo.Location, "", new { @class = "text-danger" })
+                                                  </div>
+                                             </div>
+                                             <div class="box-group">
+                                                  @Html.LabelFor(model => model.ProjectInfo.Owner, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                  <div class="col-md-4">
+                                                       @Html.EditorFor(model => model.ProjectInfo.Owner, new { htmlAttributes = new { @class = "form-control", Id = "pOwner" } })
+                                                       @Html.ValidationMessageFor(model => model.ProjectInfo.Owner, "", new { @class = "text-danger" })
+                                                  </div>
+                                             </div>
+                                             <div class="box-group">
+                                                  @Html.LabelFor(model => model.ProjectInfo.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                  <div class="col-md-4">
+                                                       @Html.EditorFor(model => model.ProjectInfo.Description, new { htmlAttributes = new { @class = "form-control", Id = "pDescription" } })
+                                                       @Html.ValidationMessageFor(model => model.ProjectInfo.Description, "", new { @class = "text-danger" })
+                                                  </div>
+                                             </div>
+                                             <div class="box-group">
+                                                  @Html.LabelFor(model => model.Markup, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                  <div class="hidden">
+                                                       @Html.Hidden("MarkupId", ((SelectListItem)ViewBag.Markup).Value)
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                       @Html.DropDownList("MarkupList", ViewBag.MarkupList as List<SelectListItem>, ((SelectListItem)ViewBag.Markup).Text, new { @class = "form-control", id = "bMarkup", value = "((SelectListItem)ViewBag.Markup).Value" })
+                                                  </div>
+                                             </div>
+                                             <div class="box-group" style="padding-top:150px;">
+                                                  <div style="height: 250px; overflow: auto;">
+                                                       <div id="poleAssemblyList"></div>
+                                                       <table id="poleAssemblyTbl" class="table table-bordered table-striped active">
+                                                            <thead>
+                                                                 <tr>
+                                                                      <th>#</th>
+                                                                      <th>Code</th>
+                                                                      <th>BSpan</th>
+                                                                      <th>Wires</th>
+                                                                      <th>IO</th>
+                                                                      <th></th>
+                                                                      <th></th>
+                                                                 </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                 @foreach (var item in Model.PoleList)
+                                                                      {
+                                                                      <tr>
+                                                                           @if (item.Number.Equals("0"))
+                                                                                {
+                                                                                <td id="pole_@item.Number">X</td>}
+                                                                           else
+                                                                                {
+                                                                                <td id="pole_@item.Number">@item.Number</td>}
+                                                                           @{int ioResult = item.Wires * item.BSpan; }
+                                                                           <td><input type="text" id="pId_@item.Number" name="pId_@item.Number" class="form-control" value="@item.Code" /></td>
+                                                                           <td><input type="number" id="bSpan_@item.Number" name="bSpan_@item.Number" onkeyup="CalculateIO(@item.Number)" onblur="CalculateIO(@item.Number)" style="width:75px" class="form-control" value="@item.BSpan" /></td>
+                                                                           <td><input type="number" id="wires_@item.Number" name="wires_@item.Number" onkeyup="CalculateIO(@item.Number)" onblur="CalculateIO(@item.Number)" style="width:75px" class="form-control" value="@item.Wires" /></td>
+                                                                           <td><input type="number" id="ioResult_@item.Number" name="ioResult_@item.Number" style="width:100px;" value=@ioResult disabled="disabled" /></td>
+                                                                           <td>
+                                                                                <input type="button" class="btn btn-md btn-block" value="Edit Assembly" onclick="PoleAssemblyForEditPopup('@Model.Code;@item.Code')" data-target="#modal-container" data-toggle="modal" />
+                                                                           </td>
+                                                                           @if (item.Number != "0")
+                                                                                {
+                                                                                <td><input type="button" class="ibtnDel btn btn-md btn-danger" value="Delete" onclick="DeletePole(@item.Number)"></td>}
+                                                                           <td></td>
+                                                                      </tr>}
+                                                            </tbody>
+                                                            <tfoot>
+                                                                 <tr>
+                                                                      <td colspan="5" style="text-align: left;">
+                                                                           <input type="button" class="btn btn-lg btn-block " id="btnAddPole" value="Add Pole" onclick="AddNewPoleForEdit()" />
+                                                                      </td>
+                                                                 </tr>
+                                                                 <tr></tr>
+                                                            </tfoot>
+                                                       </table>
+                                                  </div>
+                                             </div>
+                                        </fieldset>
+                                   </div>
+                                   <div class="box-footer">
+                                        <div class="pull-left footer">
+                                             <button type="button" value="Update" data-dismiss="modal" class="btn btn-primary" id="btnUpdateBom" onclick="UpdateAssemblyRecordBom()">Update</button>
+                                             <button type="button" value="Close" data-dismiss="modal" class="btn btn-default" onclick="CancelOperation()">Cancel</button>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+     }
+
+

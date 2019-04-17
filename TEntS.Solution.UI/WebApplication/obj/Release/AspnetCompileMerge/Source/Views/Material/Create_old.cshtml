@@ -1,0 +1,58 @@
+﻿@model WebApplication.Models.MaterialModels
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal box-solid warning" role="form" aria-hidden="true" id="create-material-record">
+    <div class="modal-content">
+        <div class="modal-header with-border">
+            <h3 class="modal-title">Add Record</h3>
+            <button type="button" class="close" data-dissmiss="modal" aria-label="Close">&times;</button>
+            <div class="modal-body"></div>
+            @*<div class="modal-body">
+                @using (Html.BeginForm("Create", "Material", FormMethod.Post, new { role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.Code)
+                        @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                        <span class="fa fa-bars form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @if (Roles.IsUserInRole(User.Identity.Name, "Admin"))
+                        {
+                            @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control" })
+                            <i class="fa fa-money"></i>
+                            <span class="fa fa-money form-control-feedback"></span>
+                        }
+                    </div>
+                    <div class="form-group has-feedback">
+                        <div class="box">
+                            <div class="box-header">
+                                <div class="pull-right box-tools">
+                                    <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body pad">
+                                <form>
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "textarea", placeholder = "Place description text here" })
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-box-footer">
+                        <button type="button" class="btn btn-primary" id="btnSaveMaterial" onclick="createNewMaterial()">Save</button>
+                        <button type="button" class="btn btn-primary" id="btnCancelMaterial" onclick="cancelNewMaterial()">Cancel</button>
+                    </div>
+                }
+            </div>*@
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dissmiss="modal" onclick="createMaterialRecord()"><i class="fa fa-close">Close</i></button>
+            </div>
+        </div>
+    </div>
+</div>

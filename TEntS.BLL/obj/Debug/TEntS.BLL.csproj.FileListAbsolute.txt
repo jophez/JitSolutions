@@ -1,0 +1,40 @@
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.dll.config
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.Types.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.Types.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.pdb
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\Moq.dll
+C:\Users\admin\Desktop\Projects\School Management System\MT\TEntSPlatform\TEntS.BLL\bin\Debug\Moq.xml
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.dll.config
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.pdb
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\Moq.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.Types.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.Types.pdb
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\Moq.xml
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\obj\Debug\ResolveAssemblyReference.cache
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.dll
+E:\Users\Hiteru\Documents\visual studio 2010\Projects\Tents.Sems\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.dll.config
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\Moq.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\bin\Debug\Moq.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.BLL\obj\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\TEntS.BLL.dll.config
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\TEntS.BLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\Moq.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\Moq.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Debug\TEntS.BLL.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Debug\TEntS.BLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Debug\TEntS.BLL.pdb

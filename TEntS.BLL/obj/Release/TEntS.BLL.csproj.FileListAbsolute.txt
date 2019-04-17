@@ -1,0 +1,10 @@
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\TEntS.BLL.dll.config
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\TEntS.BLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\TEntS.BLL.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\Moq.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\TEntS.Types.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\TEntS.Types.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\Moq.xml
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Release\TEntS.BLL.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Release\TEntS.BLL.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Release\TEntS.BLL.pdb

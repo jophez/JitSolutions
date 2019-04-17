@@ -1,0 +1,30 @@
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.ClientBLL.Tests.dll.config
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.ClientBLL.Tests.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.ClientBLL.Tests.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\Castle.Core.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\Moq.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\System.ValueTuple.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.BLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.ClientBLL.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.Types.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.DataContext.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\EntityFramework.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.BLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.ClientBLL.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.Types.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\Castle.Core.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\Moq.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\Moq.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\System.ValueTuple.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\TEntS.DataContext.pdb
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\bin\Debug\EntityFramework.xml
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\obj\Debug\TEntS.ClientBLL.Tests.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\obj\Debug\TEntS.ClientBLL.Tests.dll
+C:\JiTSolutions\Source Code\UI\Tents.Sems\TEntSPlatform\TEntS.ClientBLL.Tests\obj\Debug\TEntS.ClientBLL.Tests.pdb
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL.Tests\obj\Debug\TEntS.ClientBLL.Tests.csprojResolveAssemblyReference.cache
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL.Tests\obj\Debug\TEntS.ClientBLL.Tests.dll
+C:\JiTSolutions\TEntS.Solution\TEntS.ClientBLL.Tests\obj\Debug\TEntS.ClientBLL.Tests.pdb

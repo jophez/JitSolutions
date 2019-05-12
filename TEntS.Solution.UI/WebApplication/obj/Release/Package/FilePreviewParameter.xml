@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="Default Web Site/WynPower" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\JiTSolutions\\TEntS\.Solution\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\JiTSolutions\\TEntS\.Solution\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Joseph\\Source\\Repos\\JitSolutions\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Joseph\\Source\\Repos\\JitSolutions\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
   <parameter name="ConnectionString-Web.config Connection String" description="" value="Data Source=localhost;Initial Catalog=WynPowerDb;Integrated Security=True" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\JiTSolutions\\TEntS\.Solution\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConnectionString']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Joseph\\Source\\Repos\\JitSolutions\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConnectionString']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=localhost;Initial Catalog=WynPowerDb;Integrated Security=True" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\JiTSolutions\\TEntS\.Solution\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Joseph\\Source\\Repos\\JitSolutions\\TEntS\.Solution\.UI\\WebApplication\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

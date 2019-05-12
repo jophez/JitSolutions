@@ -17,3 +17,8 @@ C:\JiTSolutions\TEntS.Solution\TEntS.Types\bin\Debug\TEntS.Types.pdb
 C:\JiTSolutions\TEntS.Solution\TEntS.Types\obj\Debug\TEntS.Types.dll
 C:\JiTSolutions\TEntS.Solution\TEntS.Types\obj\Debug\TEntS.Types.pdb
 C:\JiTSolutions\TEntS.Solution\TEntS.Types\obj\Debug\TEntS.Types.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\bin\Debug\TEntS.Types.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\bin\Debug\TEntS.Types.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\obj\Debug\TEntS.Types.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\obj\Debug\TEntS.Types.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\obj\Debug\TEntS.Types.csprojResolveAssemblyReference.cache

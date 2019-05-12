@@ -38,3 +38,13 @@ C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Debug\Moq.xml
 C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Debug\TEntS.BLL.csprojResolveAssemblyReference.cache
 C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Debug\TEntS.BLL.dll
 C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Debug\TEntS.BLL.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\TEntS.BLL.dll.config
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\TEntS.BLL.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\TEntS.BLL.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\Moq.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\TEntS.Types.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\TEntS.Types.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Debug\Moq.xml
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\obj\Debug\TEntS.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\obj\Debug\TEntS.BLL.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\obj\Debug\TEntS.BLL.pdb

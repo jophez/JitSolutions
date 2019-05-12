@@ -8,3 +8,13 @@ C:\JiTSolutions\TEntS.Solution\TEntS.BLL\bin\Release\Moq.xml
 C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Release\TEntS.BLL.csprojResolveAssemblyReference.cache
 C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Release\TEntS.BLL.dll
 C:\JiTSolutions\TEntS.Solution\TEntS.BLL\obj\Release\TEntS.BLL.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\TEntS.BLL.dll.config
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\TEntS.BLL.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\TEntS.BLL.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\Moq.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\TEntS.Types.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\TEntS.Types.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\bin\Release\Moq.xml
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\obj\Release\TEntS.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\obj\Release\TEntS.BLL.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.BLL\obj\Release\TEntS.BLL.pdb

@@ -3,3 +3,8 @@ C:\JiTSolutions\TEntS.Solution\TEntS.Types\bin\Release\TEntS.Types.pdb
 C:\JiTSolutions\TEntS.Solution\TEntS.Types\obj\Release\TEntS.Types.dll
 C:\JiTSolutions\TEntS.Solution\TEntS.Types\obj\Release\TEntS.Types.pdb
 C:\JiTSolutions\TEntS.Solution\TEntS.Types\obj\Release\TEntS.Types.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\bin\Release\TEntS.Types.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\bin\Release\TEntS.Types.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\obj\Release\TEntS.Types.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\obj\Release\TEntS.Types.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\TEntS.Types\obj\Release\TEntS.Types.pdb

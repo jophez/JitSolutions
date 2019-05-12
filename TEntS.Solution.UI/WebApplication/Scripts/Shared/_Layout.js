@@ -1,11 +1,4 @@
-﻿/**
- * AdminLTE Demo Menu
- * ------------------
- * You should not use this file in production.
- * This file is for demo purposes only.
- */
-
-(function ($, AdminLTE) {
+﻿(function ($, AdminLTE) {
 
     "use strict";
 
@@ -335,6 +328,6 @@
             $("[data-layout='sidebar-collapse']").attr('checked', 'checked');
         }
 
-        $('[data-toggle="tooltip"]').tooltip(); //09-10-2018
+        $('[data-toggle="tooltip"]').tooltip(); 
     }
 })(jQuery, $.AdminLTE);

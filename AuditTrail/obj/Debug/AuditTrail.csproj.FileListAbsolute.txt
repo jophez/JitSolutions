@@ -13,3 +13,7 @@ C:\JiTSolutions\TEntS.Solution\AuditTrail\bin\Debug\AuditTrail.pdb
 C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Debug\AuditTrail.dll
 C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Debug\AuditTrail.pdb
 C:\JiTSolutions\TEntS.Solution\AuditTrail\obj\Debug\AuditTrail.csprojResolveAssemblyReference.cache
+C:\Users\Joseph\Source\Repos\JitSolutions\AuditTrail\bin\Debug\AuditTrail.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\AuditTrail\bin\Debug\AuditTrail.pdb
+C:\Users\Joseph\Source\Repos\JitSolutions\AuditTrail\obj\Debug\AuditTrail.dll
+C:\Users\Joseph\Source\Repos\JitSolutions\AuditTrail\obj\Debug\AuditTrail.pdb
